@@ -13,6 +13,7 @@ let s:snipMate['scope_aliases'] = get(s:snipMate,'scope_aliases',
 	  \ ,'cs':'c'
 	  \ ,'xhtml': 'html'
 	  \ ,'html': 'javascript'
+	  \ ,'htmldjango': 'html'
 	  \ ,'php': 'php,html,javascript'
 	  \ ,'ur': 'html,javascript'
 	  \ ,'mxml': 'actionscript'
