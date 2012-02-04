@@ -1,8 +1,14 @@
+" This file demonstrates
+" - how to register your own snippet sources (call snipMate_python_demo#Activate() in ftplugin/python.vim)
+" - implents a source which creates snippets based on python function
+"   definitions found in the current file
+"
+" Example:
+"
 " def abc(a,b,c=None)
 " will create a snippet on the fly which looks like this:
 " abc(${1:a}, ${2:b}, ${3:c=None})
 
-" call this once after
 fun! snipMate_python_demo#Activate()
   if !exists('g:snipMateSources')
     let g:snipMateSources = {}
@@ -33,7 +39,7 @@ fun! snipMate_python_demo#FunctionsFromCurrentFileAndTags(scopes, trigger, resul
   if a:trigger == '*' | return | endif
   if index(a:scopes, 'python') < 0 | return | endif
   for t in taglist('^'.a:trigger)
-    call s:Add(a:result, t.cmd, 'tags-'.filename)
+    call s:Add(a:result, t.cmd, 'tags-' . t.filename, a:trigger)
   endfor
   for l in getline(0, line('$'))
     call s:Add(a:result, l, 'current-file', a:trigger)
